@@ -1,40 +1,55 @@
-export class Profile {
-  id: number;
-  surname: string;
-  name: string;
-  email: string;
-  type: string;
-  class?: string; // Only for students
-  teaching?: string[]; // Only for professors
+import { DataTypes, Model } from 'sequelize';
+import sequelize from '../database';
 
-  constructor(
-    id: number,
-    surname: string,
-    name: string,
-    email: string,
-    type: string,
-    extraAttribute?: string | string[]
-  ) {
-    this.id = id;
-    this.surname = surname;
-    this.name = name;
-    this.email = email;
-    this.type = type;
-
-    if (type === 'student' && typeof extraAttribute === 'string') {
-      this.class = extraAttribute;
-    } else if (type === 'professor' && Array.isArray(extraAttribute)) {
-      this.teaching = extraAttribute;
-    }
-  }
+// Define the Profile model
+export class Profile extends Model {
+  public id!: number;
+  public surname!: string;
+  public name!: string;
+  public email!: string;
+  public type!: string;
+  public class?: string; // Optional for 'student'
+  public teaching?: string[]; // Optional for 'professor'
 }
 
-// Hardcoded array of Profile objects
-export const profiles: Profile[] = [
-  new Profile(1, 'Doe', 'John', 'john.doe@student.edu', 'student', 'CDOF6'),
-  new Profile(2, 'Smith', 'Jane', 'jane.smith@professor.edu', 'professor', ['CDOF6', 'CDOF1']),
-  new Profile(3, 'Brown', 'Chris', 'chris.brown@admin.edu', 'admin'),
-  new Profile(4, 'Taylor', 'Emily', 'emily.taylor@student.edu', 'student', 'CDOF1'),
-  new Profile(5, 'Johnson', 'Michael', 'michael.johnson@professor.edu', 'professor', ['CDOF6']),
-  new Profile(6, 'Williams', 'Olivia', 'olivia.williams@admin.edu', 'admin')
-];
+// Initialize the Profile model
+Profile.init(
+  {
+    id: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true,
+    },
+    surname: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+    },
+    type: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    class: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    teaching: {
+      type: DataTypes.ARRAY(DataTypes.STRING),
+      allowNull: true,
+    },
+  },
+  {
+    sequelize,
+    tableName: 'profiles',
+  }
+);
+
+export default Profile;
