@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ProfileService } from '../services/profile.service';
 import { CommonModule } from '@angular/common';
+import {RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-view-profile',
   standalone: true,
   imports: [
-    CommonModule
+    CommonModule,
+    RouterLink
   ],
   templateUrl: './view-profile.component.html',
   styleUrl: './view-profile.component.css'

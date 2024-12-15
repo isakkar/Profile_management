@@ -19,4 +19,10 @@ export class ProfileService {
   getProfiles(): Observable<any> {
     return this.http.get<any>(this.apiUrl);
   }
+
+  // GET method to get profiles by id
+  getProfileById(id: string) {
+    return this.http.get(`${this.apiUrl}/${id}`);
+  }
+
 }

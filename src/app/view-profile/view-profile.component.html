@@ -16,7 +16,7 @@
       <p *ngIf="profile.type === 'admin'">Admin</p>
     </div>
     <div class="profile-footer">
-      <button>View Details</button>
+      <button [routerLink]="['/profile-details', profile.id]">View Details</button>
     </div>
   </div>
 </div>
