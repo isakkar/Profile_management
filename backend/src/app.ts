@@ -1,4 +1,5 @@
 import express, { Application } from 'express';
+import cors from 'cors';
 import livenessRoute from './routes/liveness';
 import profileCreationRoute from './routes/profileCreation';
 import sequelize from './database';
@@ -8,6 +9,7 @@ const app: Application = express();
 const PORT = process.env.PORT || 3000;
 
 // Middleware
+app.use(cors());
 app.use(express.json());
 
 // Sync Sequelize models with the database

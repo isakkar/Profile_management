@@ -1,0 +1,72 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f9;
+  margin: 0;
+  padding: 20px;
+}
+
+.profile-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 profiles per row */
+  gap: 20px; /* Space between profiles */
+  justify-items: center; /* Center profiles in each grid cell */
+}
+
+.profile-card {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 280px; /* Adjust the max width if needed */
+  margin: 0;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.profile-header {
+  background-color: #007BFF;
+  color: white;
+  text-align: center;
+  padding: 15px;
+}
+
+.profile-content {
+  padding: 20px;
+}
+
+.profile-content h3 {
+  margin: 0 0 10px;
+  color: #333;
+}
+
+.profile-content p {
+  margin: 5px 0;
+  color: #555;
+  font-size: 14px;
+}
+
+.profile-footer {
+  text-align: center;
+  padding: 10px;
+  border-top: 1px solid #eee;
+  background: #f9f9f9;
+}
+
+.profile-footer button {
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.profile-footer button:hover {
+  background-color: #0056b3;
+}

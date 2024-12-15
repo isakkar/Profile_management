@@ -1,1 +1,22 @@
-<p>view-profile works!</p>
+<div *ngIf="message" class="error-message">
+  {{ message }}
+</div>
+
+<div class="profile-container" *ngIf="profiles.length > 0">
+  <div class="profile-card" *ngFor="let profile of profiles">
+    <div class="profile-header">
+      <h2>{{ profile.name }} {{ profile.surname }}</h2>
+    </div>
+    <div class="profile-content">
+      <h3>Type: {{ profile.type }}</h3>
+      <p>ID: {{ profile.id }}</p>
+      <p>Email: {{ profile.email }}</p>
+      <p *ngIf="profile.type === 'student'">Class: {{ profile.class || 'N/A' }}</p>
+      <p *ngIf="profile.type === 'professor'">Subjects: {{ profile.teaching || 'N/A' }}</p>
+      <p *ngIf="profile.type === 'admin'">Admin</p>
+    </div>
+    <div class="profile-footer">
+      <button>View Details</button>
+    </div>
+  </div>
+</div>

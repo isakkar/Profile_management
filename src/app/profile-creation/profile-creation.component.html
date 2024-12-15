@@ -64,54 +64,54 @@
     button:hover {
       background-color: #0056b3;
     }
-
-    .form-section {
-      margin-bottom: 20px;
-    }
-
-    .form-section.hidden {
-      display: none;
-    }
-
   </style>
-  <script>
-    function handleSubmit(event) {
-      event.preventDefault();
-      const formData = new FormData(event.target);
-      const data = Object.fromEntries(formData.entries());
-
-      // Sauvegarde des données dans le localStorage
-      let profiles = JSON.parse(localStorage.getItem('profiles')) || [];
-      profiles.push(data);
-      localStorage.setItem('profiles', JSON.stringify(profiles));
-
-      // Redirection vers la page d'affichage des profils
-      window.location.href = 'view-profile.component.html';
-    }
-  </script>
 </head>
 <body>
-<form onsubmit="handleSubmit(event)">
+<form (ngSubmit)="onSubmit()" #profileForm="ngForm">
   <h1>Dynamic Form</h1>
 
   <div class="form-section">
     <label for="surname">Surname:</label>
-    <input type="text" id="surname" name="surname" required>
+    <input
+      type="text"
+      id="surname"
+      name="surname"
+      [(ngModel)]="profile.surname"
+      required
+    >
   </div>
 
   <div class="form-section">
     <label for="name">Name:</label>
-    <input type="text" id="name" name="name" required>
+    <input
+      type="text"
+      id="name"
+      name="name"
+      [(ngModel)]="profile.name"
+      required
+    >
   </div>
 
   <div class="form-section">
     <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required>
+    <input
+      type="email"
+      id="email"
+      name="email"
+      [(ngModel)]="profile.email"
+      required
+    >
   </div>
 
   <div class="form-section">
     <label for="type">Type:</label>
-    <select id="type" name="type" onchange="handleTypeChange(event)">
+    <select
+      id="type"
+      name="type"
+      [(ngModel)]="profile.type"
+      (change)="onTypeChange()"
+      required
+    >
       <option value="">Select Type</option>
       <option value="student">Student</option>
       <option value="professor">Professor</option>
@@ -119,21 +119,43 @@
     </select>
   </div>
 
-  <div class="form-section student-section hidden">
+  <div *ngIf="profile.type === 'student'" class="form-section">
     <label for="class">Class:</label>
-    <input type="text" id="class" name="class">
+    <input
+      type="text"
+      id="class"
+      name="extraAttribute"
+      [(ngModel)]="profile.extraAttribute"
+      placeholder="Enter class"
+      required
+    >
   </div>
 
-  <div class="form-section professor-section hidden">
+  <div *ngIf="profile.type === 'professor'" class="form-section">
     <label for="teaching">Teaching Subjects:</label>
-    <input type="text" id="teaching" name="teaching" placeholder="Comma-separated values">
+    <input
+      type="text"
+      id="teaching"
+      name="extraAttribute"
+      [(ngModel)]="profile.extraAttribute"
+      placeholder="Comma-separated values"
+      required
+    >
   </div>
 
-  <div class="form-section admin-section hidden">
+  <div *ngIf="profile.type === 'admin'" class="form-section">
     <label for="role">Role:</label>
-    <input type="text" id="role" name="role" placeholder="e.g., System Administrator">
+    <input
+      type="text"
+      id="role"
+      name="extraAttribute"
+      [(ngModel)]="profile.extraAttribute"
+      placeholder="e.g., System Administrator"
+      required
+    >
   </div>
 
-  <button type="submit">Submit</button>
+  <button type="submit" [disabled]="!profileForm.valid">Submit</button>
+  <p *ngIf="message">{{ message }}</p>
 </form>
 </body>
