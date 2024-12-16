@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProfileService } from '../services/profile.service';
 import {CommonModule} from '@angular/common';
 
@@ -18,6 +18,7 @@ export class ProfileDetailsComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private profileService: ProfileService
   ) {}
 
@@ -33,6 +34,23 @@ export class ProfileDetailsComponent implements OnInit {
       });
     } else {
       this.error = 'Profile ID not provided.';
+    }
+  }
+
+  deleteProfile(): void {
+    if (this.profile && this.profile.id) {
+      if (confirm('Are you sure you want to delete this profile?')) {
+        this.profileService.deleteProfile(this.profile.id).subscribe({
+          next: () => {
+            alert('Profile deleted successfully.');
+            this.router.navigate(['/view-profile']);
+          },
+          error: (err) => {
+            console.error('Error deleting profile:', err);
+            alert('Failed to delete profile. Please try again.');
+          },
+        });
+      }
     }
   }
 }

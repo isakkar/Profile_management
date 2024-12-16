@@ -11,6 +11,7 @@
       </p>
       <p *ngSwitchCase="'admin'"><strong>Has admin privileges</strong></p>
       <p><strong>Creation date:</strong> {{ profile.createdAt | date:'yyyy-MM-dd' }}</p>
+      <button class="delete-button" (click)="deleteProfile()">Delete Profile</button>
     </ng-container>
   </div>
   <ng-template #loading>

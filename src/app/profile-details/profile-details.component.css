@@ -21,3 +21,19 @@
   text-align: center;
   color: red;
 }
+
+.delete-button {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+.delete-button:hover {
+  background-color: #cc0000;
+}
+

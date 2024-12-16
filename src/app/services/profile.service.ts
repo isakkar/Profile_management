@@ -25,4 +25,8 @@ export class ProfileService {
     return this.http.get(`${this.apiUrl}/${id}`);
   }
 
+  // GET method to delete a profile
+  deleteProfile(id: string): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/${id}`);
+  }
 }
