@@ -9,7 +9,6 @@ import {PersonalProfileComponent} from './personal-profile/personal-profile.comp
 
 export const routes: Routes = [
   { path: '', component: HomePageComponent }, // Default route for the home page
-  {path:'student-profile-page', component: StudentProfilePageComponent},
   {path:'profile-creation', component:ProfileCreationComponent},
   { path: 'view-profile', component: ViewProfileComponent },
   { path: 'profile-details/:id', component: ProfileDetailsComponent },
