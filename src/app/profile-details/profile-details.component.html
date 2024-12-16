@@ -1,0 +1,23 @@
+<div class="details-container" *ngIf="!error">
+  <h1>Profile Details</h1>
+  <div *ngIf="profile; else loading">
+    <p><strong>Name:</strong> {{ profile.name }} {{ profile.surname }}</p>
+    <p><strong>Email:</strong> {{ profile.email }}</p>
+    <p><strong>Type:</strong> {{ profile.type }}</p>
+    <ng-container [ngSwitch]="profile.type">
+      <p *ngSwitchCase="'student'"><strong>Class:</strong> {{ profile.class }}</p>
+      <p *ngSwitchCase="'professor'">
+        <strong>Subjects:</strong> {{ profile.teaching?.join(', ') || 'N/A' }}
+      </p>
+      <p *ngSwitchCase="'admin'"><strong>Has admin privileges</strong></p>
+      <p><strong>Creation date:</strong> {{ profile.createdAt | date:'yyyy-MM-dd' }}</p>
+      <button class="delete-button" (click)="deleteProfile()">Delete Profile</button>
+    </ng-container>
+  </div>
+  <ng-template #loading>
+    <p>Loading profile details...</p>
+  </ng-template>
+</div>
+<div *ngIf="error" class="error">
+  <p>{{ error }}</p>
+</div>

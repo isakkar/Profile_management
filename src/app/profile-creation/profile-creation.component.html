@@ -1,0 +1,161 @@
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create a profile</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 92.4vh;
+    }
+
+    h1 {
+      color: #333;
+      text-align: center;
+    }
+
+    form {
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 400px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+      color: #555;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+
+    input:focus, select:focus {
+      outline: none;
+      border-color: #007BFF;
+      box-shadow: 0 0 3px rgba(0, 123, 255, 0.5);
+    }
+
+    button {
+      background-color: #007BFF;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      width: 100%;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+<form (ngSubmit)="onSubmit()" #profileForm="ngForm">
+  <h1>Create a profile</h1>
+
+  <div class="form-section">
+    <label for="surname">Surname:</label>
+    <input
+      type="text"
+      id="surname"
+      name="surname"
+      [(ngModel)]="profile.surname"
+      required
+    >
+  </div>
+
+  <div class="form-section">
+    <label for="name">Name:</label>
+    <input
+      type="text"
+      id="name"
+      name="name"
+      [(ngModel)]="profile.name"
+      required
+    >
+  </div>
+
+  <div class="form-section">
+    <label for="email">Email:</label>
+    <input
+      type="email"
+      id="email"
+      name="email"
+      [(ngModel)]="profile.email"
+      required
+    >
+  </div>
+
+  <div class="form-section">
+    <label for="type">Type:</label>
+    <select
+      id="type"
+      name="type"
+      [(ngModel)]="profile.type"
+      (change)="onTypeChange()"
+      required
+    >
+      <option value="">Select Type</option>
+      <option value="student">Student</option>
+      <option value="professor">Professor</option>
+      <option value="admin">Admin</option>
+    </select>
+  </div>
+
+  <div *ngIf="profile.type === 'student'" class="form-section">
+    <label for="class">Class:</label>
+    <input
+      type="text"
+      id="class"
+      name="extraAttribute"
+      [(ngModel)]="profile.extraAttribute"
+      placeholder="Enter class"
+      required
+    >
+  </div>
+
+  <div *ngIf="profile.type === 'professor'" class="form-section">
+    <label for="teaching">Teaching Subjects:</label>
+    <input
+      type="text"
+      id="teaching"
+      name="extraAttribute"
+      [(ngModel)]="profile.extraAttribute"
+      placeholder="Comma-separated values"
+      required
+    >
+  </div>
+
+  <div *ngIf="profile.type === 'admin'" class="form-section">
+    <label for="role">Role:</label>
+    <input
+      type="text"
+      id="role"
+      name="extraAttribute"
+      [(ngModel)]="profile.extraAttribute"
+      placeholder="e.g., System Administrator"
+      required
+    >
+  </div>
+
+  <button type="submit" [disabled]="!profileForm.valid">Submit</button>
+  <p *ngIf="message">{{ message }}</p>
+</form>
+</body>
