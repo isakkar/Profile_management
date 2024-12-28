@@ -11,6 +11,7 @@ ModuleRegistry.registerModules([AllCommunityModule]);
 const myTheme = themeAlpine.withParams({
   accentColor: 'blue',
   headerBackgroundColor: 'rgb(0, 123, 255)',
+  headerTextColor: 'white'
 });
 
 @Component({
@@ -39,16 +40,18 @@ export class ViewProfileGridComponent implements OnInit {
       { headerName: 'ID', field: 'id', sortable: true, filter: true },
       { headerName: 'Surname', field: 'surname', sortable: true, filter: true },
       { headerName: 'Name', field: 'name', sortable: true, filter: true },
-      { headerName: 'Email', field: 'email', sortable: true, filter: true },
-      { headerName: 'Type', field: 'type', sortable: true, filter: true },
+      { headerName: 'Email', field: 'email', sortable: false, filter: false },
+      { headerName: 'Type', field: 'type', sortable: false, filter: true },
       {
         headerName: 'Class',
         field: 'class',
+        filter: true,
         valueGetter: (params: any) => params.data.type === 'student' ? params.data.class : null
       },
       {
         headerName: 'Teaching',
         field: 'teaching',
+        filter: true,
         valueGetter: (params: any) => params.data.type === 'professor' ? params.data.teaching : null
       },
     ];
