@@ -6,7 +6,7 @@ import {
   _processOnChange,
   _removeFromParent,
   createGrid
-} from "./chunk-A5HJQRCN.js";
+} from "./chunk-BZ67R65B.js";
 import {
   Component,
   ElementRef,
@@ -31,8 +31,8 @@ import {
   ɵɵdirectiveInject,
   ɵɵgetInheritedFactory,
   ɵɵinject
-} from "./chunk-4LCQMBQ4.js";
-import "./chunk-WDMUDEB6.js";
+} from "./chunk-Y36EU4NN.js";
+import "./chunk-3OV72XIM.js";
 
 // node_modules/ag-grid-angular/fesm2022/ag-grid-angular.mjs
 var AngularFrameworkComponentWrapper = class _AngularFrameworkComponentWrapper extends BaseComponentWrapper {
