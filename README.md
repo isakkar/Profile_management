@@ -1,27 +1,56 @@
-# SEProject
+# Profile Management System
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.8.
+## Home page
+![home](data/home_page_screenshot.png)
+
+## Charts page
+Various interactive charts
+![charts](data/charts_page_screenshot.png)
+
+## Display profiles
+![profiles](data/view_profile_page_screenshot.png)
+
+## Display profiles using AG-Grid
+![profiles](data/view_profile_grid_page_screenshot.png)
+
+## Create profiles
+Enter the name, surname, email, select the profile type and enter the extra attribute (class if student, teaching if professor).
+![profile creation](data/profile_creation_page_screenshot.png)
+
+## Lessons
+![lessons](data/lessons_page_screenshot.png)
+
+## Personal profile
+![profile](data/personal_profile_page_screenshot.png)
+
+## Swagger ui Rest API
+Url: `http://localhost:3000/api-docs/#/`
+![swagger ui](data/swagger_ui_rest_api_page_screenshot.png)
 
 ## Development server
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Run `npm run start` for the backend server. Navigate to `http://localhost:3000/api/`.
 
-## Code scaffolding
+## PostgreSQL database
+A database is required for storing the profiles.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Name of the database: SEprofiles
 
-## Build
+User: SEDBuser
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Password: pass123
 
-## Running unit tests
+You can use the web page to create new profiles, or you can run the SQL script located in the data folder.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Work done
+Icham SAKKAR: backend & connecting it to frontend
 
-## Running end-to-end tests
+Maxim QUÉNEL: frontend pages: view-profile page, view-profile-grid page (using AG-Grid), profile creation
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Cyprien MOUTON: frontend pages: home, charts (using Highcharts), lessons
 
-## Further help
+Elouan QUINIOU: swagger ui setup
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+We couldn't all use GitHub as only one person had access to the database in order to test if they worked.
+They created the pages separately and gave them to me, and I added them into the repository.
