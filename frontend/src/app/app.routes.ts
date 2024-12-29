@@ -5,7 +5,9 @@ import {ProfileCreationComponent} from './profile-creation/profile-creation.comp
 import { HomePageComponent } from './home-page/home-page.component';
 import {ProfileDetailsComponent} from './profile-details/profile-details.component';
 import {PersonalProfileComponent} from './personal-profile/personal-profile.component';
-import {LessonsComponent} from './lessons/lessons.component'; // Import the home page component
+import {LessonsComponent} from './lessons/lessons.component';
+import {ViewProfileGridComponent} from './view-profile-grid/view-profile-grid.component';
+import {ChartComponent} from './chart/chart.component';
 
 export const routes: Routes = [
   { path: '', component: HomePageComponent }, // Default route for the home page
@@ -14,4 +16,6 @@ export const routes: Routes = [
   { path: 'profile-details/:id', component: ProfileDetailsComponent },
   { path: 'personal-profile', component: PersonalProfileComponent },
   { path: 'lessons', component: LessonsComponent },
+  { path: 'view-profile-grid', component:ViewProfileGridComponent},
+  { path: 'charts', component:ChartComponent}
 ];

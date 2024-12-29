@@ -1,0 +1,14 @@
+<div *ngIf="message" class="error-message">
+  {{ message }}
+</div>
+
+<div style="width: 100%; height: 500px;" *ngIf="profiles.length > 0">
+  <ag-grid-angular
+    [rowData]="profiles"
+    [columnDefs]="columnDefs"
+    [pagination]="true"
+    [domLayout]="'autoHeight'"
+    [animateRows]="true"
+    [gridOptions]="gridOptions"
+  ></ag-grid-angular>
+</div>
