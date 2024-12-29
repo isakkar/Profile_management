@@ -27,6 +27,9 @@ Enter the name, surname, email, select the profile type and enter the extra attr
 Url: `http://localhost:3000/api-docs/#/`
 ![swagger ui](data/swagger_ui_rest_api_page_screenshot.png)
 
+## Demonstration video
+[![Watch the video](data/home_page_screenshot.png)](https://www.youtube.com/watch?v=7rh6hXcvxtg)
+
 ## Development server
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`.
 
